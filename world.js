@@ -9,10 +9,18 @@ window.onload = function(){
         }
     }
 
-    let button = document.getElementById("lookup");
-    button.onclick = function(){
+    let cobutton = document.getElementById("lookup");
+    cobutton.onclick = function(){
         let value = document.getElementById("country").value
-        xttp.open('GET',"world.php?country="+value);
+        let lookup = "country"
+        xttp.open('GET',"world.php?country="+value+"&lookup="+lookup);
+        xttp.send()
+    }
+    let cibutton = document.getElementById("lookupc");
+    cibutton.onclick = function(){
+        let value = document.getElementById("country").value
+        let lookup = "city"
+        xttp.open('GET',"world.php?country="+value+"&lookup="+lookup);
         xttp.send()
     }
 
