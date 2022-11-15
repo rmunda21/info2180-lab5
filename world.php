@@ -72,8 +72,9 @@ $lookup = $_GET['lookup'];
 </table>
 <?php }?>
 <?php } else{?>
-<?php $sql = "SELECT * FROM cities WHERE name LIKE '%$country%'";?>
+<?php $sql = "SELECT cities.name,cities.district,cities.population FROM cities JOIN countries ON cities.country_code = countries.code  WHERE countries.name LIKE '%$country%'";?>
 <?php $results = $conn->query($sql);?>
+
 <?php if ($results->rowCount() > 0){?>
 <table>
 <tr>
@@ -92,5 +93,3 @@ $lookup = $_GET['lookup'];
 <?php }?>
 <?php }?>
 <?php }?>
-<?php $sql = "SELECT * FROM countries INNER JOIN cities ON countries.name = cities.name";?>
-<?php $results = $conn->query($sql);?>
